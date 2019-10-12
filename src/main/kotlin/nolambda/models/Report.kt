@@ -9,6 +9,6 @@ import org.simpleframework.xml.Root
 class Report @JvmOverloads constructor(
     @field:Attribute var name: String? = null,
     @field:Element(name = "group", required = false) var groups: List<Group>? = null,
-    @field:ElementList(name = "package", inline = true) var packages: List<Package>? = null,
+    @field:ElementList(name = "package", inline = true) var packages: List<Package> = mutableListOf(),
     @field:ElementList(name = "counter", inline = true) var counters: List<Counter>? = null
 )

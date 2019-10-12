@@ -8,6 +8,6 @@ import org.simpleframework.xml.Root
 class Package @JvmOverloads constructor(
     @field:Attribute(required = false) var name: String? = null,
     @field:ElementList(required = false, name = "sourcefiles") var sourceFiles: List<SourceFile>? = null,
-    @field:ElementList(required = false, name = "class_names") var classNames: List<Class>? = null,
-    @field:ElementList(name = "counter", inline = true) var counters: List<Counter>? = null
+    @field:ElementList(name = "class", inline = true) var classes: List<Class> = mutableListOf(),
+    @field:ElementList(name = "counter", inline = true) var counters: List<Counter> = mutableListOf()
 )

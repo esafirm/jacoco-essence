@@ -20,6 +20,10 @@ class ParsingSpec : StringSpec({
         pack.counters shouldNotBe null
     }
 
+    "it should get all classes" {
+        println("Classes: ${result.packages.first().classes.size}")
+    }
+
     "it should get all coverage" {
         val instructions = result.counters?.filter { it.type == "INSTRUCTION" }?.first()
 
