@@ -11132,7 +11132,7 @@
                 <counter type="COMPLEXITY" missed="1" covered="0" />
                 <counter type="METHOD" missed="1" covered="0" />
             </method>
-            <method name="start" desc="(Landroid/content/Context;Ljava/lang/Class;)V" line="9">
+            <method name="start" desc="(Landroid/content/Context;Ljava/lang/nolambda.models.Class;)V" line="9">
                 <counter type="INSTRUCTION" missed="8" covered="0" />
                 <counter type="LINE" missed="2" covered="0" />
                 <counter type="COMPLEXITY" missed="1" covered="0" />

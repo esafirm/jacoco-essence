@@ -1,0 +1,5 @@
+package nolambda
+
+fun main() {
+
+}
