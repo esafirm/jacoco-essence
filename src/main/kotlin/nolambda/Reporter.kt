@@ -1,10 +1,14 @@
 package nolambda
 
+import nolambda.models.Counter
+import nolambda.models.JacocoClass
 import nolambda.models.Report
+import kotlin.math.floor
 
 class Reporter(
     private val report: Report,
-    private val minimumPercentage: Float
+    private val minimumPercentage: Float,
+    private val affectedClasses: List<String> = emptyList()
 ) {
 
     companion object {
@@ -34,4 +38,40 @@ class Reporter(
             status = createCoverageStatus(coveragePercentage)
         )
     }
+
+    private fun getClasssReport(clazz: JacocoClass): Counter {
+        val counters = clazz.counters
+        val branchCounter = counters.firstOrNull() { it.type == "BRANCH" }
+        val lineCounter = counters.firstOrNull() { it.type == "LINE" }
+
+        val resultCounter = when (branchCounter == null) {
+            true -> lineCounter
+            else -> branchCounter
+        }
+
+        checkNotNull(resultCounter) { "No coverage data found for ${clazz.name}" }
+
+        return resultCounter
+    }
+
+    fun getClassReport(): List<String> {
+        val jacocoClass = getAffectedJacocoClass()
+        return jacocoClass.map {
+            val classReport = getClasssReport(it)
+            val total = classReport.covered + classReport.missed
+            val coverage = floor(classReport.covered / total * 100F)
+            "${it.name} | $coverage | ${createCoverageStatus(coverage)}"
+        }
+    }
+
+    private fun getAffectedJacocoClass(): List<JacocoClass> {
+        val affectedClass = affectedClasses.map { it.split(".").first() }
+        val jacocoClassess = report.packages.asSequence().map { it.classes }.flatten()
+
+        return jacocoClassess.filter {
+            affectedClass.contains(it.name)
+        }.toList()
+    }
+
+
 }

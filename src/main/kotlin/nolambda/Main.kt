@@ -1,5 +1,4 @@
 package nolambda
 
 fun main() {
-
 }

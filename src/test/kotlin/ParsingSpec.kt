@@ -1,3 +1,4 @@
+import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
@@ -14,14 +15,15 @@ class ParsingSpec : StringSpec({
         result.name shouldBe "app"
         result.groups shouldBe null
         result.packages shouldNotBe null
-        result.counters shouldNotBe  null
+        result.counters shouldNotBe null
 
-        val pack = result.packages!![0]
+        val pack = result.packages[0]
         pack.counters shouldNotBe null
     }
 
     "it should get all classes" {
-        println("Classes: ${result.packages.first().classes.size}")
+        result.packages.first().classes.size shouldBeGreaterThan 0
+        println("Class: ${result.packages.first().classes.first().name}")
     }
 
     "it should get all coverage" {
