@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2daae74f-d4e4-418d-bce3-dc381cbddd56" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.kotlintest/spec_failures" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Reporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/Reporter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Class.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/JacocoClass.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Counter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Counter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Method.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Method.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Package.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Package.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +20,21 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -42,8 +49,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
@@ -137,7 +144,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

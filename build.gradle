@@ -14,8 +14,9 @@ test {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
     implementation 'org.simpleframework:simple-xml:2.7.+'
+    implementation 'com.github.ajalt:clikt:2.2.0'
 
     testImplementation 'io.kotlintest:kotlintest-runner-junit5:3.3.2'
     testImplementation 'io.mockk:mockk:1.9'

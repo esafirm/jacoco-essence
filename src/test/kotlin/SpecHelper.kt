@@ -1,5 +1,4 @@
-import nolambda.models.Report
-import org.simpleframework.xml.core.Persister
+import nolambda.ReportHelper
 
 object SpecHelper {
 
@@ -11,8 +10,5 @@ object SpecHelper {
         return content.bufferedReader(Charsets.UTF_8).readText()
     }
 
-    fun createReport(): Report {
-        val serializer = Persister()
-        return serializer.read(Report::class.java, SpecHelper.getXmlFile())
-    }
+    fun createReport() = ReportHelper.createReport(getXmlFile())
 }
