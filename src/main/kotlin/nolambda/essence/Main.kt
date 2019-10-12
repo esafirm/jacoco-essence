@@ -7,7 +7,22 @@ import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.int
 
 object Main {
-    fun main(args: List<String>) = MainCommand().main(args)
+    @JvmStatic
+    fun main(args: Array<String>) {
+        MainCommand().main(args)
+    }
+}
+
+object DebugMain {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        MainCommand().main(
+            listOf(
+                "--input=src/test/resources/jacoco.xml",
+                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt"
+            )
+        )
+    }
 }
 
 class MainCommand : CliktCommand() {

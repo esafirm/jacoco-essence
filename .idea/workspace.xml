@@ -4,20 +4,7 @@
     <list default="true" id="2daae74f-d4e4-418d-bce3-dc381cbddd56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/ReportHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/ReportResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Reporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Reporter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Counter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Counter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Group.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/JacocoClass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/JacocoClass.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Method.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Method.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Package.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Package.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Report.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Report.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/SourceFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/SourceFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.ReporterSpec">
+  <component name="RunManager" selected="Kotlin.nolambda.essence.DebugMain">
     <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <setting name="replType" value="NREPL" />
       <setting name="execution" value="LEININGEN" />
@@ -146,8 +133,36 @@
       <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="nolambda.essence.DebugMain" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="jacoco-essence.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="nolambda.essence.DebugMain" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="nolambda.essence.Main" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="jacoco-essence.main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="nolambda.essence.Main" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.nolambda.essence.DebugMain" />
+        <item itemvalue="Kotlin.nolambda.essence.Main" />
         <item itemvalue="Gradle.ReporterSpec" />
         <item itemvalue="Gradle.ParsingSpec" />
       </list>
