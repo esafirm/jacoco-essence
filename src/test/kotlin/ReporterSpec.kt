@@ -2,7 +2,7 @@ import io.kotlintest.matchers.collections.shouldNotBeEmpty
 import io.kotlintest.matchers.floats.shouldBeGreaterThan
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
-import nolambda.Reporter
+import nolambda.essence.Reporter
 
 class ReporterSpec : StringSpec({
 

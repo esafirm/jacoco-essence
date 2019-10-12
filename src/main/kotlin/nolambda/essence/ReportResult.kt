@@ -1,4 +1,4 @@
-package nolambda
+package nolambda.essence
 
 data class ReportResult(
     val coveragePercentage: Float,

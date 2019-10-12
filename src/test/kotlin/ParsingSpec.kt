@@ -2,7 +2,7 @@ import io.kotlintest.matchers.numerics.shouldBeGreaterThan
 import io.kotlintest.shouldBe
 import io.kotlintest.shouldNotBe
 import io.kotlintest.specs.StringSpec
-import nolambda.models.Report
+import nolambda.essence.models.Report
 import org.simpleframework.xml.core.Persister
 
 class ParsingSpec : StringSpec({

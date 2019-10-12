@@ -1,6 +1,6 @@
-package nolambda
+package nolambda.essence
 
-import nolambda.models.Report
+import nolambda.essence.models.Report
 import org.simpleframework.xml.core.Persister
 import java.io.File
 

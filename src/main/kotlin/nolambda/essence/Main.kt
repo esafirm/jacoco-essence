@@ -1,4 +1,4 @@
-package nolambda
+package nolambda.essence
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.default
@@ -6,7 +6,9 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.int
 
-fun main(args: List<String>) = MainCommand().main(args)
+object Main {
+    fun main(args: List<String>) = MainCommand().main(args)
+}
 
 class MainCommand : CliktCommand() {
     private val input: String by option(help = "Jacoco XML file").prompt()

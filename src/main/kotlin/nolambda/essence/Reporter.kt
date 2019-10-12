@@ -1,8 +1,8 @@
-package nolambda
+package nolambda.essence
 
-import nolambda.models.Counter
-import nolambda.models.JacocoClass
-import nolambda.models.Report
+import nolambda.essence.models.Counter
+import nolambda.essence.models.JacocoClass
+import nolambda.essence.models.Report
 import kotlin.math.floor
 
 class Reporter(

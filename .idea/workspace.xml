@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2daae74f-d4e4-418d-bce3-dc381cbddd56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.kotlintest/spec_failures" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/ReportHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/ReportResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportResult.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/Reporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Reporter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Counter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Counter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Group.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Group.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/JacocoClass.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/JacocoClass.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Method.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Method.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Package.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Package.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/Report.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/Report.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/models/SourceFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/models/SourceFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ParsingSpec.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ReporterSpec.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/SpecHelper.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +64,11 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/nolambda/essence" />
+    </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="nolambda.essence" />
       <recent name="nolambda.models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">

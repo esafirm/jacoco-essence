@@ -28,3 +28,18 @@ compileKotlin {
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
+
+// Define the main class for the application
+mainClassName = "nolambda.essence.Main"
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': archiveVersion,
+                'Main-Class': "nolambda.essence.Main"
+    }
+    archivesBaseName = project.name
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

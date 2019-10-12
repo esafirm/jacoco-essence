@@ -1,4 +1,4 @@
-package nolambda.models
+package nolambda.essence.models
 
 import org.simpleframework.xml.Attribute
 import org.simpleframework.xml.Root

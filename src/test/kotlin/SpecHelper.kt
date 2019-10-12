@@ -1,4 +1,4 @@
-import nolambda.ReportHelper
+import nolambda.essence.ReportHelper
 
 object SpecHelper {
 
