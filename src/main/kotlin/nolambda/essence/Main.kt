@@ -6,6 +6,7 @@ import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.int
+import nolambda.essence.diff.GitDiff
 
 object Main {
     @JvmStatic
@@ -19,8 +20,8 @@ object DebugMain {
     fun main(args: Array<String>) {
         MainCommand().main(
             listOf(
-                "--input=src/test/resources/jacoco.xml"
-//                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt"
+                "--input=src/test/resources/jacoco.xml",
+                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt"
             )
         )
     }
@@ -39,6 +40,8 @@ class MainCommand : CliktCommand() {
 
     private val dest: String? by option(help = "Branch destination. This is used if --useGit or -g is enabled")
 
+    private val gitDiff by lazy { GitDiff() }
+
     private fun createDiff(): String {
         if (useGit) {
             return createDiffFromGit()
@@ -47,7 +50,7 @@ class MainCommand : CliktCommand() {
     }
 
     private fun createDiffFromGit(): String {
-        return ReportHelper.createGitDif(dest) ?: throw IllegalArgumentException("Diff not found!")
+        return gitDiff.createGitDif(dest) ?: throw IllegalArgumentException("Diff not found!")
     }
 
     override fun run() {
