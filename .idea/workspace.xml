@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2daae74f-d4e4-418d-bce3-dc381cbddd56" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/ReportHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/diff/GitDiff.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/nolambda/essence/diff/GitDiff.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +72,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Kotlin.nolambda.essence.DebugMain">
+  <component name="RunManager" selected="Gradle.DefaultCommandExecutorSpec">
     <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
       <setting name="replType" value="NREPL" />
       <setting name="execution" value="LEININGEN" />
@@ -93,12 +91,32 @@
       <module name="" />
       <method v="2" />
     </configuration>
-    <configuration name="ParsingSpec" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DefaultCommandExecutorSpec" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ParsingSpec&quot;" />
+        <option name="scriptParameters" value="--tests &quot;DefaultCommandExecutorSpec&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":cleanTest" />
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>false</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="GitDiffSpec" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;GitDiffSpec&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -161,10 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DefaultCommandExecutorSpec" />
+        <item itemvalue="Gradle.GitDiffSpec" />
         <item itemvalue="Kotlin.nolambda.essence.DebugMain" />
         <item itemvalue="Kotlin.nolambda.essence.Main" />
         <item itemvalue="Gradle.ReporterSpec" />
-        <item itemvalue="Gradle.ParsingSpec" />
       </list>
     </recent_temporary>
   </component>
