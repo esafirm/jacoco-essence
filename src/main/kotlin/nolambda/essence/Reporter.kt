@@ -23,7 +23,22 @@ class Reporter(
         }
     }
 
-    fun getTotalPercentage(): ReportResult {
+    private fun createClassReport(clazz: JacocoClass): Counter {
+        val counters = clazz.counters
+        val branchCounter = counters.firstOrNull() { it.type == "BRANCH" }
+        val lineCounter = counters.firstOrNull() { it.type == "LINE" }
+
+        val resultCounter = when (branchCounter == null) {
+            true -> lineCounter
+            else -> branchCounter
+        }
+
+        checkNotNull(resultCounter) { "No coverage data found for ${clazz.name}" }
+
+        return resultCounter
+    }
+
+    fun getTotalReport(): ReportResult {
         val counter = report.counters?.find { it.type == TYPE_INSTRUCTION }
         checkNotNull(counter)
 
@@ -39,28 +54,17 @@ class Reporter(
         )
     }
 
-    private fun getClasssReport(clazz: JacocoClass): Counter {
-        val counters = clazz.counters
-        val branchCounter = counters.firstOrNull() { it.type == "BRANCH" }
-        val lineCounter = counters.firstOrNull() { it.type == "LINE" }
-
-        val resultCounter = when (branchCounter == null) {
-            true -> lineCounter
-            else -> branchCounter
-        }
-
-        checkNotNull(resultCounter) { "No coverage data found for ${clazz.name}" }
-
-        return resultCounter
-    }
-
-    fun getClassReport(): List<String> {
+    fun getClassReport(): List<ClassReportResult> {
         val jacocoClass = getAffectedJacocoClass()
         return jacocoClass.map {
-            val classReport = getClasssReport(it)
+            val classReport = createClassReport(it)
             val total = classReport.covered + classReport.missed
             val coverage = floor(classReport.covered / total * 100F)
-            "${it.name} | $coverage | ${createCoverageStatus(coverage)}"
+            ClassReportResult(
+                name = it.name,
+                coverage = coverage,
+                status = createCoverageStatus(coverage)
+            )
         }
     }
 

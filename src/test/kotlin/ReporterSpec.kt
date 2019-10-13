@@ -14,7 +14,7 @@ class ReporterSpec : StringSpec({
         )
     )
 
-    val result = reporter.getTotalPercentage()
+    val result = reporter.getTotalReport()
 
     println(
         """
