@@ -58,6 +58,10 @@ class MainCommand : CliktCommand() {
         val affectedFiles = createDiff().lines()
         val reporter = Reporter(report, min.toFloat(), affectedFiles)
 
-        println(reporter.getClassReport())
+        println("Project Coverage:")
+        println(reporter.getTotalReport())
+
+        println("\nClasses Coverage:")
+        println(reporter.getClassReport().map { it.toString() }.reduce { acc, s -> "$acc\n$s" })
     }
 }
