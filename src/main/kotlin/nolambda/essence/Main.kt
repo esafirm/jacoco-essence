@@ -61,7 +61,12 @@ class MainCommand : CliktCommand() {
         println("Project Coverage:")
         println(reporter.getTotalReport())
 
+        val map = reporter.getClassReport().map { it.toString() }
         println("\nClasses Coverage:")
-        println(reporter.getClassReport().map { it.toString() }.reduce { acc, s -> "$acc\n$s" })
+        if (map.isNotEmpty()) {
+            println(map.reduce { acc, s -> "$acc\n$s" })
+        } else {
+            println("reporter empty")
+        }
     }
 }
