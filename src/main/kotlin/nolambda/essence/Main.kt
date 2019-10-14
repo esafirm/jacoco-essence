@@ -7,6 +7,7 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
 import com.github.ajalt.clikt.parameters.types.int
 import nolambda.essence.diff.GitDiff
+import kotlin.system.exitProcess
 
 object Main {
     @JvmStatic
@@ -57,16 +58,17 @@ class MainCommand : CliktCommand() {
         val report = ReportHelper.createReportFromPath(input)
         val affectedFiles = createDiff().lines()
         val reporter = Reporter(report, min.toFloat(), affectedFiles)
+        val totalReport = reporter.getTotalReport()
 
         println("Project Coverage:")
-        println(reporter.getTotalReport())
+        println(totalReport)
 
         val map = reporter.getClassReport().map { it.toString() }
-        println("\nClasses Coverage:")
         if (map.isNotEmpty()) {
+            println("\nClasses Coverage:")
             println(map.reduce { acc, s -> "$acc\n$s" })
-        } else {
-            println("reporter empty")
         }
+        
+        exitProcess(totalReport.code)
     }
 }

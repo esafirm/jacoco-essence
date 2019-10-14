@@ -15,10 +15,18 @@ class Reporter(
         const val TYPE_INSTRUCTION = "INSTRUCTION"
     }
 
-    private fun createCoverageStatus(coveragePercentage: Float): String {
-        return when {
-            coveragePercentage < (minimumPercentage / 2) -> ":skull:"
-            coveragePercentage < minimumPercentage -> ":warning:"
+    private fun createExitCode(covPercent: Float) : Int {
+        return when{
+            covPercent < (minimumPercentage / 2) -> 2
+            covPercent < minimumPercentage -> 1
+            else -> 0
+        }
+    }
+
+    private fun createCoverageStatus(code: Int): String {
+        return when(code) {
+            2 -> ":skull:"
+            1 -> ":warning:"
             else -> ":white_check_mark:"
         }
     }
@@ -47,10 +55,13 @@ class Reporter(
 
         val totalInstruction = covered + missed
         val coveragePercentage: Float = (covered * 100F / totalInstruction)
-
+        val code = createExitCode(coveragePercentage)
+        val status = createCoverageStatus(code)
+        
         return ReportResult(
             coveragePercentage = coveragePercentage,
-            status = createCoverageStatus(coveragePercentage)
+            status = status,
+            code = code
         )
     }
 
@@ -60,10 +71,12 @@ class Reporter(
             val classReport = createClassReport(it)
             val total = classReport.covered + classReport.missed
             val coverage = floor(classReport.covered / total * 100F)
+            val code = createExitCode(coverage)
+            val status = createCoverageStatus(code)
             ClassReportResult(
                 name = it.name,
                 coverage = coverage,
-                status = createCoverageStatus(coverage)
+                status = status
             )
         }
     }
