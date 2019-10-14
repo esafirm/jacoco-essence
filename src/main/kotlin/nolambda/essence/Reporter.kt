@@ -17,8 +17,8 @@ class Reporter(
 
     private fun createCoverageStatus(coveragePercentage: Float): String {
         return when {
-            coveragePercentage < (minimumPercentage / 2) -> ":skull"
-            coveragePercentage < minimumPercentage -> ":warning"
+            coveragePercentage < (minimumPercentage / 2) -> ":skull:"
+            coveragePercentage < minimumPercentage -> ":warning:"
             else -> ":white_check_mark:"
         }
     }
