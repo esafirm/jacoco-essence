@@ -25,6 +25,8 @@ module Danger
         @jplugin.report(xmlReport)
 
         expect(@dangerfile.status_report[:markdowns][0].message).to include("Project Coverage:")
+        expect(@dangerfile.status_report[:markdowns][0].message).to include("Coverage: 0.31289113 %")
+        expect(@dangerfile.status_report[:markdowns][0].message).to include("Status: :white_check_mark:")
       end
 
     end
