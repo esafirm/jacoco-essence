@@ -20,12 +20,11 @@ module Danger
         # allow(@jplugin.github).to receive(:pr_json).and_return(json)
       end
 
-      # Some examples for writing tests
-      # You should replace these with your own.
-
       it "Run the JAR" do 
-        xmlReport = "#{File.dirname(__FILE__)}/fixtures/b.xml"
+        xmlReport = "#{File.dirname(__FILE__)}/fixtures/jacoco.xml"
         @jplugin.report(xmlReport)
+
+        expect(@dangerfile.status_report[:markdowns][0].message).to include("Project Coverage:")
       end
 
     end

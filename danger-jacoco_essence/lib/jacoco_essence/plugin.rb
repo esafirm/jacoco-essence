@@ -29,8 +29,12 @@ module Danger
     # @return   [Array<String>]
     #
     def report(path)
-      markdown_report = `java -jar jacoco-essence-1.0-SNAPSHOT --input=""`
+      jarFile = "#{File.dirname(__FILE__)}/jacoco-essence-1.0-SNAPSHOT.jar"
+
+      markdown_report = `java -jar #{jarFile} --input="#{path}"`
       markdown(markdown_report)
+
+      puts markdown_report
     end
 
   end
