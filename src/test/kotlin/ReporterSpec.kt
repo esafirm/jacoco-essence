@@ -9,6 +9,7 @@ class ReporterSpec : StringSpec({
     val reporter = Reporter(
         SpecHelper.createReport(),
         10F,
+        10F,
         listOf(
             "com/esafirm/androidplayground/test/ClassToTest.kt"
         )
