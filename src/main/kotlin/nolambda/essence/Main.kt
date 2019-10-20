@@ -22,7 +22,8 @@ object DebugMain {
         MainCommand().main(
             listOf(
                 "--input=src/test/resources/jacoco.xml",
-                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt"
+                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt",
+                "--min=5"
             )
         )
     }
