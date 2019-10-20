@@ -10,9 +10,15 @@ object OutputFormatter {
     }
 
     fun classReportResultToMarkdown(results: List<ClassReportResult>): String {
+
+        val classReportString = when (results.isEmpty()) {
+            true -> "No class reports"
+            else -> results.map { it.toString() }.reduce { acc, s -> "$acc\n$s" }
+        }
+
         return """
             ### Classes Coverage:
-            ${results.map { it.toString() }.reduce { acc, s -> "$acc\n$s" }}
+            $classReportString
         """.trimIndent()
     }
 }
