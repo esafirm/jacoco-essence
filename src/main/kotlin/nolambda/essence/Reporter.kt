@@ -8,6 +8,7 @@ import kotlin.math.floor
 class Reporter(
     private val report: Report,
     private val minimumPercentage: Float,
+    private val minimumClassPercentage: Float,
     private val affectedClasses: List<String> = emptyList()
 ) {
 
@@ -15,11 +16,12 @@ class Reporter(
         const val TYPE_INSTRUCTION = "INSTRUCTION"
     }
 
-    private fun createCoverageStatus(coveragePercentage: Float): String {
+    private fun createCoverageStatus(coveragePercentage: Float): Pair<Boolean, String> {
+        val isFailed = coveragePercentage < minimumPercentage
         return when {
-            coveragePercentage < (minimumPercentage / 2) -> ":skull"
-            coveragePercentage < minimumPercentage -> ":warning"
-            else -> ":white_check_mark:"
+            isFailed -> true to ":skull"
+            coveragePercentage < (minimumPercentage / 2) -> false to ":warning"
+            else -> false to ":white_check_mark:"
         }
     }
 
@@ -48,9 +50,11 @@ class Reporter(
         val totalInstruction = covered + missed
         val coveragePercentage: Float = (covered * 100F / totalInstruction)
 
+        val (isFailed, status) = createCoverageStatus(coveragePercentage)
         return ReportResult(
             coveragePercentage = coveragePercentage,
-            status = createCoverageStatus(coveragePercentage)
+            status = status,
+            isFail = isFailed
         )
     }
 
@@ -59,11 +63,14 @@ class Reporter(
         return jacocoClass.map {
             val classReport = createClassReport(it)
             val total = classReport.covered + classReport.missed
-            val coverage = floor(classReport.covered / total * 100F)
+            val coveragePercentage = floor(classReport.covered / total * 100F)
+
+            val (isFailed, status) = createCoverageStatus(coveragePercentage)
             ClassReportResult(
                 name = it.name,
-                coverage = coverage,
-                status = createCoverageStatus(coverage)
+                coverage = coveragePercentage,
+                status = status,
+                isFail = isFailed
             )
         }
     }
