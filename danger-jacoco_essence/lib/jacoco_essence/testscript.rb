@@ -1,17 +1,24 @@
 #!/usr/bin/env ruby
 
-jarFile = "#{File.dirname(__FILE__)}/jacoco-essence-1.0-SNAPSHOT.jar"
-jacocoFile = "#{File.dirname(__FILE__)}/../../spec/fixtures/jacoco.xml"
-min = "10"
+def doReport(minCoverage)
+    jarFile = "#{File.dirname(__FILE__)}/jacoco-essence-1.0-SNAPSHOT.jar"
+    jacocoFile = "#{File.dirname(__FILE__)}/../../spec/fixtures/jacoco.xml"
 
-puts "'java -jar #{jarFile} -g --input=#{jacocoFile}' --min=#{min}"
+    script = "java -jar #{jarFile} -g --input=#{jacocoFile} --min=#{minCoverage}"
+    puts script
 
-markdown_report = `java -jar #{jarFile} -g --input="#{jacocoFile}"`
+    markdown_report = `#{script}`
 
-code = system("java -jar #{jarFile} -g --input=\"#{jacocoFile}\"")
+    puts "Exit status #{$?.exitstatus}"
+    if $?.exitstatus != 0
+        puts "Is error"
+    else
+        puts "Is not error"
+    end
 
-puts "Code: #{code}"
+    puts markdown_report
+end
 
-puts $?.exitstatus 
-puts "Exit status #{$?.exitstatus}"
-puts markdown_report
+doReport(10)
+puts "-----"
+doReport(0)

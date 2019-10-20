@@ -23,19 +23,21 @@ object DebugMain {
             listOf(
                 "--input=src/test/resources/jacoco.xml",
                 "--diff=com/esafirm/androidplayground/test/ClassToTest.kt",
-                "--min=5"
+                "--min=5",
+                "--min_class=10"
             )
         )
     }
 }
 
+@Suppress("PrivatePropertyName")
 class MainCommand : CliktCommand() {
     private val input: String by option(help = "Jacoco XML file").prompt()
     private val diff: String? by option(help = "List of file diff. Can be acquired from git")
 
     private val min: Float by option(help = "Minimum percentage of the coverage").float().default(0F)
 
-    private val minClass: Float? by option(
+    private val min_class: Float? by option(
         help = """
         Minimum percentage of the coverage, if not defined will use minimum coverage value
     """.trimIndent()
@@ -65,7 +67,7 @@ class MainCommand : CliktCommand() {
     override fun run() {
         val report = ReportHelper.createReportFromPath(input)
         val affectedFiles = createDiff().lines()
-        val reporter = Reporter(report, min, minClass ?: min, affectedFiles)
+        val reporter = Reporter(report, min, min_class ?: min, affectedFiles)
 
         val reportResult = reporter.getTotalReport()
         println(OutputFormatter.reportResultToMarkdown(reportResult))

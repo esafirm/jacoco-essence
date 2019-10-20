@@ -23,7 +23,6 @@ module Danger
     attr_accessor :minimum_project_coverage_percentage
     attr_accessor :minimum_class_coverage_percentage
     attr_accessor :files_extension
-    attr_accessor :minimum_class_coverage_map
 
     # A method that you can call from your Dangerfile
     # @return   [Array<String>]
@@ -31,10 +30,25 @@ module Danger
     def report(path)
       jarFile = "#{File.dirname(__FILE__)}/jacoco-essence-1.0-SNAPSHOT.jar"
 
-      markdown_report = `java -jar #{jarFile} --input="#{path}"`
-      markdown(markdown_report)
+      script = "java -jar #{jarFile}"
+      script << " --input=\"#{path}\""
 
-      puts markdown_report
+      unless minimum_project_coverage_percentage.nil?
+        script << " --min=#{minimum_project_coverage_percentage}"
+      end 
+
+      unless minimum_class_coverage_percentage.nil?
+        script << " --min_class=#{minimum_class_coverage_percentage}"
+      end
+
+      markdown_report = `#{script}`
+      
+      if $?.exitstatus != 0
+        puts "ERROR"
+        fail("Coverage not met the spesification")
+      else
+        markdown(markdown_report)
+      end
     end
 
   end
