@@ -5,8 +5,9 @@ import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.prompt
-import com.github.ajalt.clikt.parameters.types.int
+import com.github.ajalt.clikt.parameters.types.float
 import nolambda.essence.diff.GitDiff
+import kotlin.system.exitProcess
 
 object Main {
     @JvmStatic
@@ -21,7 +22,8 @@ object DebugMain {
         MainCommand().main(
             listOf(
                 "--input=src/test/resources/jacoco.xml",
-                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt"
+                "--diff=com/esafirm/androidplayground/test/ClassToTest.kt",
+                "--min=5"
             )
         )
     }
@@ -30,7 +32,14 @@ object DebugMain {
 class MainCommand : CliktCommand() {
     private val input: String by option(help = "Jacoco XML file").prompt()
     private val diff: String? by option(help = "List of file diff. Can be acquired from git")
-    private val min: Int by option(help = "Minimum percentage of the coverage").int().default(0)
+
+    private val min: Float by option(help = "Minimum percentage of the coverage").float().default(0F)
+
+    private val minClass: Float? by option(
+        help = """
+        Minimum percentage of the coverage, if not defined will use minimum coverage value
+    """.trimIndent()
+    ).float()
 
     private val useGit: Boolean
             by option(
@@ -56,18 +65,21 @@ class MainCommand : CliktCommand() {
     override fun run() {
         val report = ReportHelper.createReportFromPath(input)
         val affectedFiles = createDiff().lines()
-        val reporter = Reporter(report, min.toFloat(), affectedFiles)
+        val reporter = Reporter(report, min, minClass ?: min, affectedFiles)
 
-        println("Project Coverage:")
-        println(reporter.getTotalReport())
+        val reportResult = reporter.getTotalReport()
+        println(OutputFormatter.reportResultToMarkdown(reportResult))
 
-        println("\nClasses Coverage:")
-        val classReports = reporter.getClassReport().map { it.toString() }
-        println(
-            when (classReports.isEmpty()) {
-                true -> "No class reports"
-                else -> classReports.reduce { acc, s -> "$acc\n$s" }
-            }
-        )
+        val classReportResult = reporter.getClassReport()
+        println("\n")
+        println(OutputFormatter.classReportResultToMarkdown(classReportResult))
+
+        // Exit 1 if any of coverage fail
+        if (reportResult.isFail) {
+            exitProcess(1)
+        }
+        if (classReportResult.any { it.isFail }) {
+            exitProcess(1)
+        }
     }
 }
