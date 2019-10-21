@@ -75,11 +75,11 @@ class MainCommand : CliktCommand() {
         println("\n")
         println(OutputFormatter.classReportResultToMarkdown(classReportResult))
 
-        exitProcess(totalReport.code)
-
         // Exit 1 if any of coverage fail
         if (classReportResult.any { it.code != 0 }) {
             exitProcess(1)
         }
+        
+        exitProcess(totalReport.code)
     }
 }
