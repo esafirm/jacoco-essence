@@ -70,7 +70,7 @@ class MainCommand : CliktCommand() {
         val reporter = Reporter(report, min, min_class ?: min, affectedFiles)
         val totalReport = reporter.getTotalReport()
         
-        println(OutputFormatter.reportResultToMarkdown(reportResult))
+        println(OutputFormatter.reportResultToMarkdown(totalReport))
         val classReportResult = reporter.getClassReport()
         println("\n")
         println(OutputFormatter.classReportResultToMarkdown(classReportResult))
