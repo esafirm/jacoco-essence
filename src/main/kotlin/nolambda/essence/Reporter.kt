@@ -8,6 +8,7 @@ import kotlin.math.floor
 class Reporter(
     private val report: Report,
     private val minimumPercentage: Float,
+    private val minimumClassPercentage: Float,
     private val affectedClasses: List<String> = emptyList()
 ) {
 
@@ -54,14 +55,15 @@ class Reporter(
         val missed = checkNotNull(counter.missed)
 
         val totalInstruction = covered + missed
-        val coveragePercentage: Float = (covered * 100F / totalInstruction)
-        val code = createExitCode(coveragePercentage)
+        val coverage: Float = (covered * 100F / totalInstruction)
+        val code = createExitCode(coverage)
         val status = createCoverageStatus(code)
         
         return ReportResult(
-            coveragePercentage = coveragePercentage,
+            coverage = coverage,
             status = status,
-            code = code
+            code = code,
+            isFail = (code > 0)
         )
     }
 
@@ -76,7 +78,9 @@ class Reporter(
             ClassReportResult(
                 name = it.name,
                 coverage = coverage,
-                status = status
+                status = status,
+                code = code,
+                isFail = (code > 0)
             )
         }
     }

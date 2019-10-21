@@ -50,11 +50,6 @@ You can specify the diff data by passing `--diff` parameter. This is also helpfu
 java -jar ./jacoco-essence-1.0-SNAPSHOT.jar --input=src/test/resources/jacoco.xml --diff=$GIT_FILES
 ```
 
-## To-do
-
-- [x] Min coverage fail
-- [ ] Min coverage fail per class
-
 ## License
 
 MIT @ Esa Firman
