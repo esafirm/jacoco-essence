@@ -4,7 +4,7 @@ object OutputFormatter {
     fun reportResultToMarkdown(result: ReportResult): String {
         return """
             ### Project Coverage:
-            Coverage: ${result.coveragePercentage} %
+            Coverage: ${result.coverage} %
             Status: ${result.status}
         """.trimIndent()
     }

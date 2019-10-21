@@ -68,20 +68,18 @@ class MainCommand : CliktCommand() {
         val report = ReportHelper.createReportFromPath(input)
         val affectedFiles = createDiff().lines()
         val reporter = Reporter(report, min, min_class ?: min, affectedFiles)
-
-        val reportResult = reporter.getTotalReport()
-        println(OutputFormatter.reportResultToMarkdown(reportResult))
-
+        val totalReport = reporter.getTotalReport()
+        
+        println(OutputFormatter.reportResultToMarkdown(totalReport))
         val classReportResult = reporter.getClassReport()
         println("\n")
         println(OutputFormatter.classReportResultToMarkdown(classReportResult))
 
         // Exit 1 if any of coverage fail
-        if (reportResult.isFail) {
+        if (classReportResult.any { it.code != 0 }) {
             exitProcess(1)
         }
-        if (classReportResult.any { it.isFail }) {
-            exitProcess(1)
-        }
+        
+        exitProcess(totalReport.code)
     }
 }

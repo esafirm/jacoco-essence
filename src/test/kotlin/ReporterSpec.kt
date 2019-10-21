@@ -19,13 +19,13 @@ class ReporterSpec : StringSpec({
 
     println(
         """
-        result: ${result.coveragePercentage}
+        result: ${result.coverage}
         status: ${result.status}
     """.trimIndent()
     )
 
     "it should have result" {
-        result.coveragePercentage shouldBeGreaterThan 0F
+        result.coverage shouldBeGreaterThan 0F
         result.status shouldNotBe null
     }
 

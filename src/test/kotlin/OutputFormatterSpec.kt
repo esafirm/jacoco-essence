@@ -6,7 +6,7 @@ import nolambda.essence.ReportResult
 
 class OutputFormatterSpec : StringSpec({
     "It should format report result properly" {
-        val reportResult = ReportResult(10F, "good", false)
+        val reportResult = ReportResult(10F, "good", 0, false)
 
         OutputFormatter.reportResultToMarkdown(reportResult) shouldBe """
             ### Project Coverage:
@@ -20,6 +20,7 @@ class OutputFormatterSpec : StringSpec({
             name = "ClassN",
             coverage = 100F,
             status = "Bagus",
+            code = 0,
             isFail = false
         ))
 

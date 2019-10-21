@@ -16,15 +16,19 @@ class Reporter(
         const val TYPE_INSTRUCTION = "INSTRUCTION"
     }
 
-    private fun createCoverageStatus(
-        minPercentage: Float,
-        coveragePercentage: Float
-    ): Pair<Boolean, String> {
-        val isFailed = coveragePercentage < minPercentage
-        return when {
-            coveragePercentage < (minPercentage / 2) -> true to ":skull:"
-            isFailed -> false to ":warning:"
-            else -> false to ":white_check_mark:"
+    private fun createExitCode(covPercent: Float) : Int {
+        return when{
+            covPercent < (minimumPercentage / 2) -> 2
+            covPercent < minimumPercentage -> 1
+            else -> 0
+        }
+    }
+
+    private fun createCoverageStatus(code: Int): String {
+        return when(code) {
+            2 -> ":skull:"
+            1 -> ":warning:"
+            else -> ":white_check_mark:"
         }
     }
 
@@ -51,13 +55,15 @@ class Reporter(
         val missed = checkNotNull(counter.missed)
 
         val totalInstruction = covered + missed
-        val coveragePercentage: Float = (covered * 100F / totalInstruction)
-
-        val (isFailed, status) = createCoverageStatus(minimumPercentage, coveragePercentage)
+        val coverage: Float = (covered * 100F / totalInstruction)
+        val code = createExitCode(coverage)
+        val status = createCoverageStatus(code)
+        
         return ReportResult(
-            coveragePercentage = coveragePercentage,
+            coverage = coverage,
             status = status,
-            isFail = isFailed
+            code = code,
+            isFail = (code > 0)
         )
     }
 
@@ -66,14 +72,15 @@ class Reporter(
         return jacocoClass.map {
             val classReport = createClassReport(it)
             val total = classReport.covered + classReport.missed
-            val coveragePercentage = floor(classReport.covered / total * 100F)
-
-            val (isFailed, status) = createCoverageStatus(minimumClassPercentage, coveragePercentage)
+            val coverage = floor(classReport.covered / total * 100F)
+            val code = createExitCode(coverage)
+            val status = createCoverageStatus(code)
             ClassReportResult(
                 name = it.name,
-                coverage = coveragePercentage,
+                coverage = coverage,
                 status = status,
-                isFail = isFailed
+                code = code,
+                isFail = (code > 0)
             )
         }
     }
